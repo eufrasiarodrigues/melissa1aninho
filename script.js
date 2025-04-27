@@ -94,3 +94,13 @@ const imagens = [
     loop: false, // Garante que os slides não sejam embaralhados ou repetidos
     initialSlide: 0, // Começa sempre no primeiro slide
   });
+
+  function preCarregarImagens() {
+    imagens.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }
+
+  // Chame a função ao carregar a página
+  window.onload = preCarregarImagens;
