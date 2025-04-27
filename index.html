@@ -115,6 +115,24 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
 
+<script>
+const imagens = [
+  "./images/3O7A6379.jpg",
+  "./images/3O7A6363.jpg",
+  "./images/3O7A6389.jpg",
+  // Adicione todas as imagens aqui
+];
+
+function preCarregarImagens() {
+  imagens.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+window.onload = preCarregarImagens;
+</script>
+
 <style>
 /* Ajusta a posição da galeria para sobrepor a imagem grande */
 .galeria {
