@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Melissa - 1 Aninho</title>
-  <base href="/melissa1aninho/">
+  <link rel="stylesheet" href="./style.css"> <!-- Caminho relativo para o CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="topo">
-  <h1>Melissa 🌼</h1>
+  <h1>Melissa</h1>
   <p>Meu Primeiro Aninho</p>
 </header>
 
@@ -25,7 +27,6 @@
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <!-- Todas as fotos -->
-      <!-- Aqui você coloca o código de cada foto, exemplo -->
       <div class="swiper-slide" onclick="abrirModal(0)"><img src="./images/3O7A6379.jpg" alt="Foto 1"></div>
       <div class="swiper-slide" onclick="abrirModal(1)"><img src="./images/3O7A6363.jpg" alt="Foto 2"></div>
       <div class="swiper-slide" onclick="abrirModal(2)"><img src="./images/3O7A6389.jpg" alt="Foto 3"></div>
@@ -102,18 +103,17 @@
 </div>
 
 <footer class="footer">
-    <div class="footer-conteudo">
-      <p>
-        <span class="heart">💛</span> 
-        Feito com amor para Melissa | 01/02/2025 
-        <span class="sparkle">✨</span>
-      </p>
-      
-    </div>
-  </footer>
+  <div class="footer-conteudo">
+    <p>
+      <span class="heart"></span> 
+      Feito com amor para Melissa | 01/02/2025 
+      <span class="sparkle"></span>
+    </p>
+  </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="script.js"></script>
+<script src="./script.js"></script> <!-- Caminho relativo para o JavaScript -->
 
 <script>
 const imagens = [
@@ -134,34 +134,7 @@ window.onload = preCarregarImagens;
 </script>
 
 <style>
-/* Ajusta a posição da galeria para sobrepor a imagem grande */
-.galeria {
-  position: relative;
-  margin: 0 auto;
-  padding: 20px;
-  z-index: 10;
-}
 
-/* Hero como fundo do site */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: calc(100vh - 80px); /* Altura total da tela menos o topo fixo */
-  background-image: url('images/3O7A6379.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 1;
-}
-
-/* Estilo do rodapé */
-.footer {
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(135deg, #ffe8e8, #fff5e6);
-  padding: 30px 20px;
-  text-align: center;
-}
 </style>
 
 </body>
