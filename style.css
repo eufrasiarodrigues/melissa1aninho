@@ -63,8 +63,8 @@
   
   /* Swiper */
   .mySwiper {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%; /* Garante que o carrossel ocupe toda a largura */
+    max-width: 100%; /* Evita que ultrapasse os limites */
     margin: auto;
   }
   
@@ -99,30 +99,35 @@
   
   /* Modal personalizado */
   .modal {
-    display: none;
+    display: flex; /* Centraliza o conteúdo com flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro com transparência */
+    padding: 0; /* Remova qualquer padding */
+    overflow: hidden; /* Evita rolagem desnecessária */
+    box-sizing: border-box; /* Garante que o padding seja considerado no tamanho total */
   }
   
   .modal img {
-    max-width: 90%;
-    max-height: 80%;
+    max-width: 90%; /* Garante que a imagem não ultrapasse a largura da tela */
+    max-height: 90%; /* Garante que a imagem não ultrapasse a altura da tela */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    object-fit: contain; /* Garante que a imagem seja exibida proporcionalmente */
+    margin: auto; /* Centraliza a imagem */
   }
   
   .modal .fechar {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     cursor: pointer;
   }
@@ -131,12 +136,17 @@
     cursor: pointer;
     position: absolute;
     top: 50%;
-    padding: 10px;
-    font-size: 30px;
-    background: none;
-    border: none;
+    font-size: 2rem; /* Tamanho da seta */
+    background: none; /* Sem fundo */
+    border: none; /* Sem borda */
+    color: #d88a77; /* Cor combinando com o tema */
     transform: translateY(-50%);
-    color: #333;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .anterior:hover, .proxima:hover {
+    color: #b05a5a; /* Cor mais escura ao passar o mouse */
+    transform: translateY(-50%) scale(1.1); /* Efeito de escala */
   }
   
   .anterior {
@@ -247,5 +257,125 @@
   button:hover, .swiper-slide img:hover {
     transform: scale(1.1);
   }
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  header.topo {
+    padding: 10px;
+    background-size: cover;
+  }
+
+  header.topo h1 {
+    font-size: 2.5rem; /* Reduza o tamanho da fonte */
+  }
+
+  header.topo p {
+    font-size: 1.2rem; /* Reduza o tamanho do texto */
+  }
+
+  .hero {
+    min-height: calc(50vh - 60px); /* Reduza a altura da imagem hero */
+  }
+
+  .galeria h2 {
+    font-size: 1.5rem; /* Ajuste o tamanho do título */
+    margin-bottom: 10px;
+  }
+
+  .swiper-slide img {
+    width: 100%; /* Garante que as imagens ocupem toda a largura */
+    height: auto;
+    border-radius: 5px; /* Ajuste menor para bordas arredondadas */
+  }
+
+  .footer {
+    padding: 15px;
+    font-size: 0.8rem; /* Reduza o tamanho do texto no rodapé */
+  }
+
+  .swiper-slide {
+    width: 120px; /* Reduza o tamanho das miniaturas */
+  }
+
+  .swiper-slide img {
+    border-radius: 8px; /* Bordas menores */
+    padding: 3px; /* Reduza o espaçamento interno */
+  }
+
+  .swiper-wrapper {
+    gap: 10px; /* Adicione espaçamento entre as miniaturas */
+  }
+
+  .modal img {
+    max-width: 95%; /* Aumente a largura máxima para telas menores */
+    max-height: 70%; /* Ajuste a altura máxima */
+  }
+
+  .anterior, .proxima {
+    font-size: 1.5rem; /* Reduza o tamanho das setas */
+    padding: 10px; /* Reduza o padding */
+    border: none
+  }
+
+  .modal .fechar {
+    top: 10px; /* Ajuste a posição do botão fechar */
+    right: 10px;
+    font-size: 1.2rem; /* Reduza o tamanho do botão fechar */
+  }
+
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Remova qualquer padding adicional */
+  }
+
+  .modal img {
+    max-width: 95%; /* Ajuste a largura máxima para telas menores */
+    max-height: 80%; /* Ajuste a altura máxima */
+  }
+}
+
+/* Swiper configuração */
+const swiper = new Swiper('.mySwiper', {
+  slidesPerView: 3, // Mostra 3 slides por vez em telas maiores
+  spaceBetween: 10, // Espaçamento entre os slides
+  breakpoints: {
+    768: {
+      slidesPerView: 2, // Mostra 2 slides por vez em telas menores
+      spaceBetween: 8, // Reduz o espaçamento
+    },
+    480: {
+      slidesPerView: 1.5, // Mostra 1.5 slides por vez em telas muito pequenas
+      spaceBetween: 6, // Espaçamento ainda menor
+    },
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+<div id="modal" class="modal">
+  <button class="anterior"><i class="fas fa-chevron-left"></i></button>
+  <img id="imagemModal" src="" alt="Imagem ampliada">
+  <button class="proxima"><i class="fas fa-chevron-right"></i></button>
+  <span class="fechar" onclick="fecharModal()">✖️</span>
+</div>
+
+<button class="anterior"><i class="fas fa-chevron-left"></i></button>
+<button class="proxima"><i class="fas fa-chevron-right"></i></button>
+
+function abrirModal(index) {
+  const modal = document.getElementById('modal');
+  const imagemModal = document.getElementById('imagemModal');
+  imagemModal.src = imagens[index]; // Atualiza a imagem no modal
+  modal.style.display = 'flex'; // Garante que o modal use flexbox
+}
+
+function fecharModal() {
+  const modal = document.getElementById('modal');
+  modal.style.display = 'none';
+}
 
 

@@ -134,8 +134,43 @@ window.onload = preCarregarImagens;
 </script>
 
 <style>
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  header.topo {
+    padding: 10px;
+    background-size: cover;
+  }
 
+  header.topo h1 {
+    font-size: 2.5rem; /* Reduza o tamanho da fonte */
+  }
+
+  header.topo p {
+    font-size: 1.2rem; /* Reduza o tamanho do texto */
+  }
+
+  .hero {
+    min-height: calc(50vh - 60px); /* Reduza a altura da imagem hero */
+  }
+
+  .galeria h2 {
+    font-size: 1.5rem; /* Ajuste o tamanho do título */
+    margin-bottom: 10px;
+  }
+
+  .swiper-slide img {
+    width: 100%; /* Garante que as imagens ocupem toda a largura */
+    height: auto;
+    border-radius: 5px; /* Ajuste menor para bordas arredondadas */
+  }
+
+  .footer {
+    padding: 15px;
+    font-size: 0.8rem; /* Reduza o tamanho do texto no rodapé */
+  }
+}
 </style>
 
 </body>
 </html>
+``` 
